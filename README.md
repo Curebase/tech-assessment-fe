@@ -7,8 +7,8 @@ The following tech stack are required:
 - React
 
 These ones will be considered a differential, but are not required:
-- Apollo Client or React Query
-- Styled Components
+- [Apollo Client](https://www.apollographql.com/docs/react/) or [React Query](https://react-query.tanstack.com/)
+- [Styled Components](https://styled-components.com/)
 - Unit Tests
 
 <br />
