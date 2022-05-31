@@ -34,8 +34,9 @@ An eligible participant should:
 - BMI > 18
 - BMI < 30
 
-
-
+> BMI Formula: **weight (lb) / [height (in)]2 x 703**
+>
+> Divide weight in pounds (lb) by height in inches (in) squared and multiplying by a conversion factor of 703
 
 <br />
 
