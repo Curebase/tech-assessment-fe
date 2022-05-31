@@ -59,6 +59,10 @@ You can use https://studio.apollographql.com to play around and fetch informatio
 
 <br />
 
+# Notes
+- You need to be logged in with your Figma account to have access to all specs of the file and be able to extract colors, fonts, sizes and etc...
+- If you have any questions, don't hesitate to touch base with us.
+
 # How to delivery your tech assessment
 Fork this repo and use it as the base, then when it's ready, open an issue at this repo containing the URL of your repo, we'll do a code review.
 
