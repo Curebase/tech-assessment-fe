@@ -61,6 +61,7 @@ You can use https://studio.apollographql.com to play around and fetch informatio
 
 # Notes
 - You need to be logged in with your Figma account to have access to all specs of the file and be able to extract colors, fonts, sizes and etc...
+- Ensure that you have Node >=14.0.0 to run this project
 - If you have any questions, don't hesitate to touch base with us.
 
 <br />
