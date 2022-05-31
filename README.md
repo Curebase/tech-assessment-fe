@@ -61,3 +61,5 @@ You can use https://studio.apollographql.com to play around and fetch informatio
 
 # How to delivery your tech assessment
 Fork this repo and use it as the base, then when it's ready, open an issue at this repo containing the URL of your repo, we'll do a code review.
+
+Cheers! 🍻
