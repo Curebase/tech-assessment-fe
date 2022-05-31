@@ -41,12 +41,6 @@ An eligible participant should:
 
 <br />
 
-# How to delivery your tech assessment
-Fork this repo and use it as the base, then when it's ready, open an issue at this repo containing the URL of your repo, we'll do a code review.
-
-
-<br />
-
 # GraphQL endpoint
 ```
 https://meet-moose-89.hasura.app/v1/graphql
@@ -64,3 +58,6 @@ To fetch the data from this GraphQL endpoint you need to inform the following he
 You can use https://studio.apollographql.com to play around and fetch information about the underlying schema
 
 <br />
+
+# How to delivery your tech assessment
+Fork this repo and use it as the base, then when it's ready, open an issue at this repo containing the URL of your repo, we'll do a code review.
