@@ -9,6 +9,7 @@ The following tech stack are required:
 These ones will be considered a differential, but are not required:
 - Apollo Client or React Query
 - Styled Components
+- Unit Tests
 
 <br />
 
