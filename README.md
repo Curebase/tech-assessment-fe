@@ -72,6 +72,8 @@ You can use https://studio.apollographql.com to play around and fetch informatio
 <br />
 
 # How to delivery your tech assessment
-Fork this repo and use it as the base, then when it's ready, open an issue at this repo containing the URL of your repo, we'll do a code review.
+Clone this repo and use it as base, when you are done send your code in a .zip file to the following emails:
+- daniel@curebase.com
+- joao.mainka@curebase.com
 
 Cheers! 🍻
