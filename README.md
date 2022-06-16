@@ -75,5 +75,6 @@ You can use https://studio.apollographql.com to play around and fetch informatio
 Clone this repo and use it as base, when you are done send your code in a .zip file to the following emails:
 - daniel@curebase.com
 - joao.mainka@curebase.com
+- marissa@curebase.com
 
 Cheers! 🍻
