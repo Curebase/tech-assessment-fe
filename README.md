@@ -72,7 +72,11 @@ You can use https://studio.apollographql.com to play around and fetch informatio
 <br />
 
 # How to delivery your tech assessment
-Clone this repo and use it as base, when you are done send your code in a .zip file to the following emails:
+Fork this repo and turn your forked repo private, and then give access to the following users:
+- [@joaom182](https://github.com/joaom182)
+- [@lobo](https://github.com/lobo)
+
+When you are done with the tech assessment, please send an email to:
 - daniel@curebase.com
 - joao.mainka@curebase.com
 - marissa@curebase.com
