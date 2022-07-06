@@ -72,7 +72,7 @@ You can use https://studio.apollographql.com to play around and fetch informatio
 <br />
 
 # How to delivery your tech assessment
-Fork this repo and turn your forked repo private, and then give access to the following users:
+Clone this repo and push it to a private repo on your account, and then give access to the following users:
 - [@joaom182](https://github.com/joaom182)
 - [@lobo](https://github.com/lobo)
 - [@heitorrubira](https://github.com/heitorrubira)
