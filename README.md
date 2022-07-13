@@ -1,5 +1,5 @@
-# Sr. Front-end Engineer tech assessment
-As a Sr. Front-end Engineer we want to see your skills with architecture, security, performance and clean code.
+# Sr. Engineer tech assessment
+As a Sr. Engineer we want to see your skills with architecture, security, performance and clean code.
 <br />
 
 The following tech stack are required:
