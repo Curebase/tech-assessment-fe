@@ -41,21 +41,16 @@ An eligible participant should:
 
 <br />
 
-# GraphQL endpoint
-```
-https://meet-moose-89.hasura.app/v1/graphql
-```
+# GraphQL API
 
-To fetch the data from this GraphQL endpoint you need to inform the following headers in the requests.
+You need to setup a fresh API that implements the necessary GraphQL resolvers to retrieve / create / update the necessary data.
 
-```javascript
-{
-    "content-type": "application/json",
-    "x-hasura-admin-secret": "9zE0Tk9nT85FtEOC830iMkkfETYxctDJc2PUVsuDKmwII001T097833oLXCjGi4Q"
-}
-```
+Feel free to use the tools of our choice to build that GraphQL API.
 
-You can use https://studio.apollographql.com to play around and fetch information about the underlying schema
+FAQ:
+- You can use any framework of your choice like Nest.js, vanilla express + Apollo Server etc.
+- You can use any ORM like Prisma, Sequelize etc.
+- You can use any DBMS like Postgres, SQLite, MongoDB etc.
 
 <br />
 
