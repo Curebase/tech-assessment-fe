@@ -43,6 +43,8 @@ An eligible participant should:
 
 # GraphQL API
 
+We have a basic API setup on `/api`.
+
 You need to setup a fresh API that implements the necessary GraphQL resolvers to retrieve / create / update the necessary data.
 
 Feel free to use the tools of our choice to build that GraphQL API.
