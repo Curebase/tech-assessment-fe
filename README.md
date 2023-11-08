@@ -72,7 +72,6 @@ FAQ:
 Clone this repo and push it to a private repo on your account, and then give access to the following users:
 - [@joaom182](https://github.com/joaom182)
 - [@lobo](https://github.com/lobo)
-- [@heitorrubira](https://github.com/heitorrubira)
 
 When you are done with the tech assessment, please send an email to:
 - daniel@curebase.com
