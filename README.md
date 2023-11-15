@@ -14,7 +14,7 @@ These ones will be considered a differential, but are not required:
 <br />
 
 # Goal
-Develop a responsive React application based on this [Figma](https://www.figma.com/file/IGiTFyYotEnc94XwfMuVCE/Tech-Assessment?node-id=0%3A1) file, consuming a GraphQL endpoint.
+Develop a responsive React application based on this [Figma](https://www.figma.com/file/IGiTFyYotEnc94XwfMuVCE/Tech-Assessment?node-id=0%3A1) file, consuming a GraphQL endpoint. The application has to be packaged in Docker.
 
 # Screens
 
