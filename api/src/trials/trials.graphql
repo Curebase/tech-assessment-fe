@@ -1,3 +1,5 @@
+scalar Date
+
 type Query {
   trials: [Trial!]!
 }
@@ -18,6 +20,6 @@ type Participant {
   weight: Float!
   hasDiabetes: Boolean!
   hasCovid: Boolean!
-  enrolledDate: String!
+  enrolledDate: Date!
   trials: [Trial!]
 }
