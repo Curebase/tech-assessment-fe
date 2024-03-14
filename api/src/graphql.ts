@@ -9,8 +9,13 @@
 /* eslint-disable */
 
 export interface IQuery {
-    participants(): Participant[] | Promise<Participant[]>;
     trials(): Trial[] | Promise<Trial[]>;
+    participants(): Participant[] | Promise<Participant[]>;
+}
+
+export interface Trial {
+    id: string;
+    participants?: Nullable<Participant[]>;
 }
 
 export interface Participant {
@@ -20,10 +25,7 @@ export interface Participant {
     weight: number;
     hasDiabetes: boolean;
     hasCovid: boolean;
-}
-
-export interface Trial {
-    id: string;
+    trials?: Nullable<Trial[]>;
 }
 
 type Nullable<T> = T | null;

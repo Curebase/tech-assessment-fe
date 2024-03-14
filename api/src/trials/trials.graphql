@@ -4,4 +4,19 @@ type Query {
 
 type Trial {
   id: String!
+  participants: [Participant!]
+}
+
+type Query {
+  participants: [Participant!]!
+}
+
+type Participant {
+  id: Int!
+  name: String!
+  height: Float!
+  weight: Float!
+  hasDiabetes: Boolean!
+  hasCovid: Boolean!
+  trials: [Trial!]
 }
