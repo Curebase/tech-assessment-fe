@@ -30,7 +30,7 @@ export class TrialsResolver {
     const bmi = (participant.weight / participant.height ** 2) * 703;
     if (
       participant.hasDiabetes &&
-      !participant.hasCovid &&
+      !participant.hadCovid &&
       bmi > 18 &&
       bmi < 30
     ) {

@@ -1,4 +1,3 @@
-
 /*
  * -------------------------------------------------------
  * THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
@@ -13,7 +12,7 @@ export interface ParticipantInfo {
     height: number;
     weight: number;
     hasDiabetes?: Nullable<boolean>;
-    hasCovid?: Nullable<boolean>;
+    hadCovid?: Nullable<boolean>;
     enrolledDate?: Nullable<Date>;
 }
 
@@ -28,7 +27,7 @@ export interface Participant {
     height: number;
     weight: number;
     hasDiabetes: boolean;
-    hasCovid: boolean;
+    hadCovid: boolean;
     enrolledDate: Date;
     trials?: Nullable<Trial[]>;
 }

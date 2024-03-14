@@ -48,14 +48,14 @@ describe('TrialsResolver', () => {
   });
 
   describe('validateParticipants', () => {
-    it('should true for bmi > 18 && bmi < 30 && hasDiabetes && !hasCovid', async () => {
+    it('should true for bmi > 18 && bmi < 30 && hasDiabetes && !hadCovid', async () => {
       const testParticipant = {
         id: 1,
         name: 'Test User',
         height: 70,
         weight: 140,
         hasDiabetes: true,
-        hasCovid: false,
+        hadCovid: false,
         enrolledDate: new Date(),
       };
       jest
@@ -71,7 +71,7 @@ describe('TrialsResolver', () => {
         height: 70,
         weight: 400,
         hasDiabetes: true,
-        hasCovid: false,
+        hadCovid: false,
         enrolledDate: new Date(),
       };
       jest
@@ -87,7 +87,7 @@ describe('TrialsResolver', () => {
         height: 70,
         weight: 32,
         hasDiabetes: true,
-        hasCovid: false,
+        hadCovid: false,
         enrolledDate: new Date(),
       };
       jest
@@ -103,7 +103,7 @@ describe('TrialsResolver', () => {
         height: 70,
         weight: 140,
         hasDiabetes: true,
-        hasCovid: true,
+        hadCovid: true,
         enrolledDate: new Date(),
       };
       jest
@@ -119,7 +119,7 @@ describe('TrialsResolver', () => {
         height: 70,
         weight: 140,
         hasDiabetes: false,
-        hasCovid: false,
+        hadCovid: false,
         enrolledDate: new Date(),
       };
       jest

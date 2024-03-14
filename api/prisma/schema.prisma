@@ -21,7 +21,7 @@ model Participant {
   height       Float
   weight       Float
   hasDiabetes  Boolean  @default(false)
-  hasCovid     Boolean  @default(false)
+  hadCovid     Boolean  @default(false)
   enrolledDate DateTime @default(now())
   trials       Trial[]
 }

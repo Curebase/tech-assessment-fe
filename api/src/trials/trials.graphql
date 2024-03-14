@@ -11,7 +11,7 @@ type Participant {
   height: Float!
   weight: Float!
   hasDiabetes: Boolean!
-  hasCovid: Boolean!
+  hadCovid: Boolean!
   enrolledDate: Date!
   trials: [Trial!]
 }
@@ -21,7 +21,7 @@ input ParticipantInfo {
   height: Float!
   weight: Float!
   hasDiabetes: Boolean
-  hasCovid: Boolean
+  hadCovid: Boolean
   enrolledDate: Date
 }
 
