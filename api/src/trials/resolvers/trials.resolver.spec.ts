@@ -36,4 +36,12 @@ describe('TrialsResolver', () => {
       ]);
     });
   });
+
+  describe('getParticipants', () => {
+    it('should return all participants', async () => {
+      const participants = await resolver.participants();
+      expect(participants.length).toStrictEqual(1);
+      expect(participants[0].name).toStrictEqual('Thomas');
+    });
+  });
 });
