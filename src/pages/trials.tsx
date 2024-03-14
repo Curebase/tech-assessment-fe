@@ -13,7 +13,7 @@ const GET_TRIALS = gql`
 `;
 
 export default function Trials () {
-  const { loading, error, data } = useQuery(GET_TRIALS);
+  const { data } = useQuery(GET_TRIALS);
   return (
     <div>
     <p>Trials</p>
