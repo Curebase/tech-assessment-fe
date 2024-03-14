@@ -23,3 +23,19 @@ type Participant {
   enrolledDate: Date!
   trials: [Trial!]
 }
+
+input ParticipantInfo {
+  name: String!
+  height: Float!
+  weight: Float!
+  hasDiabetes: Boolean
+  hasCovid: Boolean
+  enrolledDate: Date
+}
+
+type Mutation {
+  createParticipant(
+    participantInfo: ParticipantInfo!
+    trialId: String
+  ): Participant
+}

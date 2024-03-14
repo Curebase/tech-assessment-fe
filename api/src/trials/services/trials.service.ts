@@ -13,4 +13,28 @@ export class TrialsService {
   async getParticipants(whereInput?: Prisma.ParticipantWhereInput) {
     return this.prismaService.participant.findMany({ where: whereInput });
   }
+
+  async createParticipant(
+    participantInfo: Prisma.ParticipantCreateInput,
+    trialId: string | null,
+  ) {
+    const newParticipant = await this.prismaService.participant.create({
+      data: participantInfo,
+    });
+    if (trialId) {
+      this.prismaService.participant.update({
+        where: {
+          id: newParticipant.id,
+        },
+        data: {
+          trials: {
+            connect: {
+              id: trialId,
+            },
+          },
+        },
+      });
+    }
+    return newParticipant;
+  }
 }

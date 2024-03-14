@@ -1,6 +1,6 @@
-import { Resolver, Query } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { TrialsService } from '../services/trials.service';
-import { Trial, Participant } from 'src/graphql';
+import { Trial, Participant, ParticipantInfo } from 'src/graphql';
 
 @Resolver()
 export class TrialsResolver {
@@ -14,5 +14,13 @@ export class TrialsResolver {
   @Query('participants')
   async participants(): Promise<Participant[]> {
     return await this.trialsService.getParticipants();
+  }
+
+  @Mutation('createParticipant')
+  async createParticipant(
+    @Args('participantInfo') participantInfo: ParticipantInfo,
+    @Args('trialId', { nullable: true }) trialId: string,
+  ): Promise<Participant> {
+    return await this.trialsService.createParticipant(participantInfo, trialId);
   }
 }
