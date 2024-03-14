@@ -19,9 +19,19 @@ export class TrialsResolver {
   @Mutation('createParticipant')
   async createParticipant(
     @Args('participantInfo') participantInfo: ParticipantInfo,
-    @Args('trialId', { nullable: true }) trialId: string,
   ): Promise<Participant> {
-    return await this.trialsService.createParticipant(participantInfo, trialId);
+    return await this.trialsService.createParticipant(participantInfo);
+  }
+
+  @Mutation('enrollParticipant')
+  async enrollParticipant(
+    @Args('participantId') participantId: number,
+    @Args('trialId') trialId: string,
+  ): Promise<Participant> {
+    return await this.trialsService.linkParticipantToTrial(
+      participantId,
+      trialId,
+    );
   }
 
   @Query('validateParticipant')

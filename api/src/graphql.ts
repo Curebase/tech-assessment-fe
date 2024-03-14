@@ -34,7 +34,8 @@ export interface Participant {
 }
 
 export interface IMutation {
-    createParticipant(participantInfo: ParticipantInfo, trialId?: Nullable<string>): Nullable<Participant> | Promise<Nullable<Participant>>;
+    createParticipant(participantInfo: ParticipantInfo): Nullable<Participant> | Promise<Nullable<Participant>>;
+    enrollParticipant(participantId: number, trialId: string): Nullable<Participant> | Promise<Nullable<Participant>>;
 }
 
 export interface IQuery {

@@ -26,10 +26,8 @@ input ParticipantInfo {
 }
 
 type Mutation {
-  createParticipant(
-    participantInfo: ParticipantInfo!
-    trialId: String
-  ): Participant
+  createParticipant(participantInfo: ParticipantInfo!): Participant
+  enrollParticipant(participantId: Int!, trialId: String!): Participant
 }
 
 type Query {

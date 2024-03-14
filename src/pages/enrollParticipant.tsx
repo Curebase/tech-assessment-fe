@@ -11,47 +11,62 @@ const GET_TRIALS = gql`
   }
 `;
 
-const ENROLL_PARTICIPANT = gql`
-  mutation CreateParticipant(
-    $trialId: String
-    $ParticipantInfo: ParticipantInfo!
-  ) {
-    createParticipant(
-      participantInfo: $ParticipantInfo
-      trialId: $trialId,
-    ) {
-      id
-    }
-  }
-`
-
 const VALIDATE_PARTICIPANT = gql`
   query ValidateParticipant($participantId: Int!) {
     validateParticipant(participantId: $participantId) 
   }
 `
 
+const CREATE_PARTICIPANT = gql`
+  mutation CreateParticipant(
+    $ParticipantInfo: ParticipantInfo!
+  ) {
+    createParticipant(
+      participantInfo: $ParticipantInfo
+    ) {
+      id
+    }
+  }
+`
+
+const ENROLL_PARTICIPANT = gql`
+mutation EnrollParticipant(
+  $participantId: Int!
+  $trialId: String!
+) {
+  enrollParticipant(
+    participantId: $participantId
+    trialId: $trialId
+  ) {
+    id
+  }
+}`
+
 export default function EnrollParticipant() {
   const { data: trials } = useQuery(GET_TRIALS);
   const [validateParticipant, {}] = useLazyQuery(VALIDATE_PARTICIPANT)
-  const [enrollParticipant, {}] = useMutation(ENROLL_PARTICIPANT);
+  const [createParticipant, {}] = useMutation(CREATE_PARTICIPANT);
+  const [EnrollParticipant, {}] = useMutation(ENROLL_PARTICIPANT);
 
   const { register, handleSubmit, formState: { errors }, setValue } = useForm()
 
   const submitForm = async (formData: any) => {
     console.log(formData)
-    const newParticipant = await enrollParticipant({variables: {
+    const newParticipant = await createParticipant({variables: {
         ParticipantInfo: {
         name: formData.name, 
         height: parseFloat(formData.height),
         weight: parseFloat(formData.weight),
         hasDiabetes: formData.hasDiabetes,
         hadCovid: formData.hadCovid
-      },
-      trialId: formData.trialId
+      }
     }})
     const participantValid = await validateParticipant({variables: {participantId: newParticipant.data.createParticipant.id}})
     console.log(participantValid)
+    if (participantValid.data.validateParticipant === true) {
+      console.log('hit link')
+      await EnrollParticipant({variables: {participantId: newParticipant.data.createParticipant.id, trialId: formData.trialId}})
+    }
   }
 
   return <div>
