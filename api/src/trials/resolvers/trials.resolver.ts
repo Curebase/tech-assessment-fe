@@ -1,6 +1,6 @@
 import { Resolver, Query } from '@nestjs/graphql';
 import { TrialsService } from '../services/trials.service';
-import { Trial } from 'src/graphql';
+import { Trial, Participant } from 'src/graphql';
 
 @Resolver()
 export class TrialsResolver {
@@ -9,5 +9,10 @@ export class TrialsResolver {
   @Query('trials')
   async trials(): Promise<Trial[]> {
     return await this.trialsService.getTrials();
+  }
+
+  @Query('participants')
+  async participants(): Promise<Participant[]> {
+    return await this.trialsService.getParticipants();
   }
 }
