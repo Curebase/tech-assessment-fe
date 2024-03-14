@@ -16,11 +16,12 @@ model Trial {
 }
 
 model Participant {
-  id          Int     @id @default(autoincrement())
-  name        String
-  height      Float
-  weight      Float
-  hasDiabetes Boolean @default(false)
-  hasCovid    Boolean @default(false)
-  trials      Trial[]
+  id           Int      @id @default(autoincrement())
+  name         String
+  height       Float
+  weight       Float
+  hasDiabetes  Boolean  @default(false)
+  hasCovid     Boolean  @default(false)
+  enrolledDate DateTime @default(now())
+  trials       Trial[]
 }

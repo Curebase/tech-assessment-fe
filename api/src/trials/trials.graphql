@@ -18,5 +18,6 @@ type Participant {
   weight: Float!
   hasDiabetes: Boolean!
   hasCovid: Boolean!
+  enrolledDate: String!
   trials: [Trial!]
 }

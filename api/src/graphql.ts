@@ -25,6 +25,7 @@ export interface Participant {
     weight: number;
     hasDiabetes: boolean;
     hasCovid: boolean;
+    enrolledDate: string;
     trials?: Nullable<Trial[]>;
 }
 
