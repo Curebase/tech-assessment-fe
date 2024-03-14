@@ -1,6 +1,17 @@
 import { useForm } from "react-hook-form"
+import { useQuery, gql } from '@apollo/client';
+import { Trial } from '../../api/src/graphql'
+
+const GET_TRIALS = gql`
+  {
+    trials {
+      id
+    }
+  }
+`;
 
 export default function EnrollParticipant() {
+  const { loading, error, data: trials } = useQuery(GET_TRIALS);
   const { register, handleSubmit } = useForm()
   return <div>
     <p>Enroll a participant</p>
@@ -25,6 +36,15 @@ export default function EnrollParticipant() {
         <input type='checkbox' {...register('hadCovid', {required: true})}/>
         <label>I had COVID-19</label>
       </div>
+      {trials && 
+      <div>
+        <label>Trial</label>
+        <select {...register('trialId', {required: true})}>
+        {trials.trials.map((trial: Trial) => (<option value={trial.id}>Trial {trial.id}</option>))}
+       </select>
+      </div>
+      }
+      <button type='submit'>Save</button>
     </form>
   </div>
 }
