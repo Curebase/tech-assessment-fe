@@ -7,7 +7,10 @@ export class TrialsService {
   constructor(private prismaService: PrismaService) {}
 
   async getTrials(whereInput?: Prisma.TrialWhereInput) {
-    return this.prismaService.trial.findMany({ where: whereInput });
+    return this.prismaService.trial.findMany({
+      where: whereInput,
+      include: { participants: true },
+    });
   }
 
   async getParticipants(whereInput?: Prisma.ParticipantWhereInput) {
@@ -30,7 +33,7 @@ export class TrialsService {
       data: participantInfo,
     });
     if (trialId) {
-      this.prismaService.participant.update({
+      await this.prismaService.participant.update({
         where: {
           id: newParticipant.id,
         },

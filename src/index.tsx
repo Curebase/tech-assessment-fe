@@ -5,9 +5,10 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Participants from './pages/participants';
 import { ApolloProvider } from '@apollo/client';
 import { client } from './ApolloClient';
+import Participants from './pages/participants';
+import Trials from './pages/trials';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: '/participants',
     element: <Participants />
+  },
+  {
+    path: '/trials',
+    element: <Trials />
   }
 ]);
 
