@@ -14,6 +14,14 @@ export class TrialsService {
     return this.prismaService.participant.findMany({ where: whereInput });
   }
 
+  async getParticipant(participantId: number) {
+    return this.prismaService.participant.findUnique({
+      where: {
+        id: participantId,
+      },
+    });
+  }
+
   async createParticipant(
     participantInfo: Prisma.ParticipantCreateInput,
     trialId: string | null,

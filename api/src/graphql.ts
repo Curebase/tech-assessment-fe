@@ -17,11 +17,6 @@ export interface ParticipantInfo {
     enrolledDate?: Nullable<Date>;
 }
 
-export interface IQuery {
-    trials(): Trial[] | Promise<Trial[]>;
-    participants(): Participant[] | Promise<Participant[]>;
-}
-
 export interface Trial {
     id: string;
     participants?: Nullable<Participant[]>;
@@ -40,6 +35,12 @@ export interface Participant {
 
 export interface IMutation {
     createParticipant(participantInfo: ParticipantInfo, trialId?: Nullable<string>): Nullable<Participant> | Promise<Nullable<Participant>>;
+}
+
+export interface IQuery {
+    trials(): Trial[] | Promise<Trial[]>;
+    participants(): Participant[] | Promise<Participant[]>;
+    validateParticipant(participantId: number): Nullable<boolean> | Promise<Nullable<boolean>>;
 }
 
 type Nullable<T> = T | null;

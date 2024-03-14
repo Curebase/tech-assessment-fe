@@ -1,16 +1,8 @@
 scalar Date
 
-type Query {
-  trials: [Trial!]!
-}
-
 type Trial {
   id: String!
   participants: [Participant!]
-}
-
-type Query {
-  participants: [Participant!]!
 }
 
 type Participant {
@@ -38,4 +30,10 @@ type Mutation {
     participantInfo: ParticipantInfo!
     trialId: String
   ): Participant
+}
+
+type Query {
+  trials: [Trial!]!
+  participants: [Participant!]!
+  validateParticipant(participantId: Int!): Boolean
 }

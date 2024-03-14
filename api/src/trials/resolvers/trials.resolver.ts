@@ -23,4 +23,20 @@ export class TrialsResolver {
   ): Promise<Participant> {
     return await this.trialsService.createParticipant(participantInfo, trialId);
   }
+
+  @Query('validateParticipant')
+  async validateParticipant(@Args('participantId') participantId: number) {
+    const participant = await this.trialsService.getParticipant(participantId);
+    const bmi = (participant.weight / participant.height ** 2) * 703;
+    if (
+      participant.hasDiabetes &&
+      !participant.hasCovid &&
+      bmi > 18 &&
+      bmi < 30
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
