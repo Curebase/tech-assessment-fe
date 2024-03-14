@@ -10,6 +10,7 @@ import { ApolloProvider } from '@apollo/client';
 import { client } from './ApolloClient';
 import Participants from './pages/participants';
 import Trials from './pages/trials';
+import EnrollParticipant from './pages/enrollParticipant';
 
 
 const router = createBrowserRouter([
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: 'trials',
         element: <Trials />
+      },
+      {
+        path: 'participants/enrollParticipant',
+        element: <EnrollParticipant />
       }
     ],
     
