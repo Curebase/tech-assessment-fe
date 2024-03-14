@@ -5,6 +5,9 @@ const GET_TRIALS = gql`
   {
     trials {
       id
+      participants {
+        id
+      }
     }
   }
 `;
@@ -14,8 +17,8 @@ export default function Trials () {
   return (
     <div>
     <p>Trials</p>
-    {data && <ul>{data?.trials?.map((participant: Trial) => (
-      <li>Trial {participant.id}</li>
+    {data && <ul>{data?.trials?.map((trial: Trial) => (
+      <li>Trial {trial.id} - {trial?.participants?.length} participant{trial?.participants && trial?.participants?.length > 1 ? "s" : ""}</li>
       ))}</ul>}
   </div>
   )
