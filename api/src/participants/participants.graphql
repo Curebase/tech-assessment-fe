@@ -1,0 +1,12 @@
+type Query {
+  participants: [Participant!]!
+}
+
+type Participant {
+  id: Int!
+  name: String!
+  height: Float!
+  weight: Float!
+  hasDiabetes: Boolean!
+  hasCovid: Boolean!
+}

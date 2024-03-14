@@ -9,7 +9,17 @@
 /* eslint-disable */
 
 export interface IQuery {
+    participants(): Participant[] | Promise<Participant[]>;
     trials(): Trial[] | Promise<Trial[]>;
+}
+
+export interface Participant {
+    id: number;
+    name: string;
+    height: number;
+    weight: number;
+    hasDiabetes: boolean;
+    hasCovid: boolean;
 }
 
 export interface Trial {
