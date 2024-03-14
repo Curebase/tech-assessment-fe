@@ -51,7 +51,6 @@ export default function EnrollParticipant() {
   const { register, handleSubmit, formState: { errors }, setValue } = useForm()
 
   const submitForm = async (formData: any) => {
-    console.log(formData)
     const newParticipant = await createParticipant({variables: {
         ParticipantInfo: {
         name: formData.name, 
@@ -62,9 +61,7 @@ export default function EnrollParticipant() {
       }
     }})
     const participantValid = await validateParticipant({variables: {participantId: newParticipant.data.createParticipant.id}})
-    console.log(participantValid)
     if (participantValid.data.validateParticipant === true) {
-      console.log('hit link')
       await EnrollParticipant({variables: {participantId: newParticipant.data.createParticipant.id, trialId: formData.trialId}})
     }
   }
