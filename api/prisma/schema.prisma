@@ -11,5 +11,16 @@ datasource db {
 }
 
 model Trial {
-  id String @id @default(uuid())
+  id           String        @id @default(uuid())
+  participants Participant[]
+}
+
+model Participant {
+  id          Int     @id @default(autoincrement())
+  name        String
+  height      Float
+  weight      Float
+  hasDiabetes Boolean @default(false)
+  hasCovid    Boolean @default(false)
+  trials      Trial[]
 }
