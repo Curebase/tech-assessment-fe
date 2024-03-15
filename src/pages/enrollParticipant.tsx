@@ -3,6 +3,7 @@ import { useQuery, useLazyQuery , useMutation } from '@apollo/client';
 import { Trial } from '../../api/src/graphql'
 import { ErrorMessage } from "@hookform/error-message"
 import { useNavigate } from "react-router-dom";
+import { Button } from "../components/button";
 import { GET_PARTICIPANTS, GET_TRIALS, VALIDATE_PARTICIPANT, CREATE_PARTICIPANT, ENROLL_PARTICIPANT, GET_TRIALS_WITH_PARTICIPANTS } from "../queries";
 
 
@@ -71,7 +72,7 @@ export default function EnrollParticipant() {
        <ErrorMessage errors={errors} name="trialId" render={({ message }) => <p>{message || 'required'}</p>}/>
       </div>
       }
-      <button type='submit'>Save</button>
+      <Button type='submit'>Save</Button>
     </form>
   </div>
 }
