@@ -14,4 +14,5 @@ export const Button = styled.button`
   font-family: Lato;
   font-size: 14px;
   font-weight: 700;
+  height: 40px;
 `
