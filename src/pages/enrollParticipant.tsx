@@ -13,7 +13,6 @@ import { Checkbox } from '../components/checkbox';
 import { ErrorLabel } from '../components/errorLabel';
 import { Select, SelectOption } from '../components/select';
 import { GET_PARTICIPANTS, GET_TRIALS, VALIDATE_PARTICIPANT, CREATE_PARTICIPANT, ENROLL_PARTICIPANT, GET_TRIALS_WITH_PARTICIPANTS } from "../queries";
-import { useEffect } from 'react';
 
 const NameInput = styled(Input)`
   width: 400px
@@ -65,8 +64,6 @@ export default function EnrollParticipant() {
   const { refetch: refetchTrials } = useQuery(GET_TRIALS_WITH_PARTICIPANTS)
 
   const { register, handleSubmit, formState: { errors } } = useForm()
-
-  useEffect( () => {console.log(errors)}, [errors])
 
   const submitForm = async (formData: any) => {
     const newParticipant = await createParticipant({variables: {
