@@ -22,21 +22,43 @@ const CurbaseLogoContainer = styled.img`
   margin-left: 60px
 `
 
+const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+  &:focus, &:hover, &:visited, &:link, &:active {
+    text-decoration: none;
+  }
+`
+
+const NavLinkText = styled.p<{$active?: boolean}>`
+  font-family: Lato;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0.10000000149011612px;
+  text-align: left;
+  color: ${props => props.$active ? "#325F64" : "#0C0C0D7A"};
+  
+`
+
 export default function NavBar () {
   return ( 
     <NavContainer>
       <CurbaseLogoContainer src={curebaseLogo} alt='logo' width='286px' height='80px' />
       <NavLinkContainer>
-        <NavLink
+        <StyledNavLink
           to="/participants"
         >
-          Participants
-        </NavLink>
-        <NavLink
+          {({ isActive }: {isActive: boolean}) => (
+            <NavLinkText $active={isActive}>Participants</NavLinkText>
+          )}
+        </StyledNavLink>
+        <StyledNavLink
           to="/trials"
         >
-          Trials
-        </NavLink>
+          {({ isActive }: {isActive: boolean}) => (
+            <NavLinkText $active={isActive}>Trials</NavLinkText>
+          )}
+        </StyledNavLink>
       </NavLinkContainer> 
     </NavContainer>
   )
