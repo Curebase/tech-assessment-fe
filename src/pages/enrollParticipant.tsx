@@ -13,6 +13,7 @@ import { Checkbox } from '../components/checkbox';
 import { ErrorLabel } from '../components/errorLabel';
 import { Select, SelectOption } from '../components/select';
 import { GET_PARTICIPANTS, GET_TRIALS, VALIDATE_PARTICIPANT, CREATE_PARTICIPANT, ENROLL_PARTICIPANT, GET_TRIALS_WITH_PARTICIPANTS } from "../queries";
+import { useEffect } from 'react';
 
 const NameInput = styled(Input)`
   width: 400px
@@ -54,8 +55,6 @@ const CheckboxRow = styled(VerticalFormRow)`
   gap: 15px;
 `
 
-
-
 export default function EnrollParticipant() {
   const { data: trials } = useQuery(GET_TRIALS);
   const navigate = useNavigate();
@@ -66,6 +65,8 @@ export default function EnrollParticipant() {
   const { refetch: refetchTrials } = useQuery(GET_TRIALS_WITH_PARTICIPANTS)
 
   const { register, handleSubmit, formState: { errors } } = useForm()
+
+  useEffect( () => {console.log(errors)}, [errors])
 
   const submitForm = async (formData: any) => {
     const newParticipant = await createParticipant({variables: {
@@ -93,18 +94,18 @@ export default function EnrollParticipant() {
         <FromContainer>
           <VerticalFormRow>
             <Label>Name</Label>
-            <NameInput type="text" {...register('name', {required: true})}/>
-            <ErrorMessage errors={errors} name="name" render={({ message }) => <ErrorLabel>{message || 'This is a required field'}</ErrorLabel>} />
+            <NameInput type="text" {...register('name', {required: 'This is a required field'})}/>
+            <ErrorMessage errors={errors} name="name" render={({ message }) => <ErrorLabel>{message}</ErrorLabel>} />
           </VerticalFormRow>
           <VerticalFormRow>
             <Label>Height (inches)</Label>
-            <NumberInput type="number" {...register('height', {required: true})}/>
-            <ErrorMessage errors={errors} name="height" render={({ message }) => <ErrorLabel>{message || 'This is a required field'}</ErrorLabel>}/>
+            <NumberInput type="number" {...register('height', {required: 'This is a required field', min: {value: 0, message: 'height must not be negative'}})}/>
+            <ErrorMessage errors={errors} name="height" render={({ message }) => <ErrorLabel>{message}</ErrorLabel>}/>
           </VerticalFormRow>
           <VerticalFormRow>
             <Label>Weight (pounds)</Label>
-            <NumberInput type="number" {...register('weight', {required: true})}/>
-            <ErrorMessage errors={errors} name="weight" render={({ message }) => <ErrorLabel>{message || 'This is a required field'}</ErrorLabel>}/>
+            <NumberInput type="number" {...register('weight', {required: 'This is a required field', min: {value: 0, message: 'weight must not be negative'}})}/>
+            <ErrorMessage errors={errors} name="weight" render={({ message }) => <ErrorLabel>{message}</ErrorLabel>}/>
           </VerticalFormRow>
           <CheckboxRow>
             <HorizontalFormRow>
@@ -119,10 +120,10 @@ export default function EnrollParticipant() {
           {trials && 
           <VerticalFormRow>
             <Label>Trial</Label>
-            <Select {...register('trialId', {required: true})}>
+            <Select {...register('trialId', {required: 'This is a required field'})}>
               {trials.trials.map((trial: Trial) => (<SelectOption value={trial.id}>Trial {trial.id}</SelectOption>))}
             </Select>
-            <ErrorMessage errors={errors} name="trialId" render={({ message }) => <ErrorLabel>{message || 'This is a required field'}</ErrorLabel>}/>
+            <ErrorMessage errors={errors} name="trialId" render={({ message }) => <ErrorLabel>{message}</ErrorLabel>}/>
           </VerticalFormRow>
           }
           <Button type='submit'>Save</Button>
