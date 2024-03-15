@@ -15,6 +15,7 @@ const TitleButtonContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 800px;
+  height: 40px;
   margin-bottom: 60px;
 `
 
