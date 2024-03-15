@@ -10,6 +10,8 @@ import { PageContainer } from '../components/pageContainer';
 import { TitleText } from '../components/titleText';
 import { Label } from '../components/label';
 import { Checkbox } from '../components/checkbox';
+import { ErrorLabel } from '../components/errorLabel';
+import { Select, SelectOption } from '../components/select';
 import { GET_PARTICIPANTS, GET_TRIALS, VALIDATE_PARTICIPANT, CREATE_PARTICIPANT, ENROLL_PARTICIPANT, GET_TRIALS_WITH_PARTICIPANTS } from "../queries";
 
 const NameInput = styled(Input)`
@@ -39,7 +41,7 @@ const VerticalFormRow = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  column-gap: 7px;
+  gap: 7px;
 `
 const HorizontalFormRow = styled.div`
   display: flex;
@@ -92,17 +94,17 @@ export default function EnrollParticipant() {
           <VerticalFormRow>
             <Label>Name</Label>
             <NameInput type="text" {...register('name', {required: true})}/>
-            <ErrorMessage errors={errors} name="name" render={({ message }) => <p>{message || 'required'}</p>} />
+            <ErrorMessage errors={errors} name="name" render={({ message }) => <ErrorLabel>{message || 'This is a required field'}</ErrorLabel>} />
           </VerticalFormRow>
           <VerticalFormRow>
             <Label>Height (inches)</Label>
             <NumberInput type="number" {...register('height', {required: true})}/>
-            <ErrorMessage errors={errors} name="height" render={({ message }) => <p>{message || 'required'}</p>}/>
+            <ErrorMessage errors={errors} name="height" render={({ message }) => <ErrorLabel>{message || 'This is a required field'}</ErrorLabel>}/>
           </VerticalFormRow>
           <VerticalFormRow>
             <Label>Weight (pounds)</Label>
             <NumberInput type="number" {...register('weight', {required: true})}/>
-            <ErrorMessage errors={errors} name="weight" render={({ message }) => <p>{message || 'required'}</p>}/>
+            <ErrorMessage errors={errors} name="weight" render={({ message }) => <ErrorLabel>{message || 'This is a required field'}</ErrorLabel>}/>
           </VerticalFormRow>
           <CheckboxRow>
             <HorizontalFormRow>
@@ -117,10 +119,10 @@ export default function EnrollParticipant() {
           {trials && 
           <VerticalFormRow>
             <Label>Trial</Label>
-            <select {...register('trialId', {required: true})}>
-              {trials.trials.map((trial: Trial) => (<option value={trial.id}>Trial {trial.id}</option>))}
-            </select>
-            <ErrorMessage errors={errors} name="trialId" render={({ message }) => <p>{message || 'required'}</p>}/>
+            <Select {...register('trialId', {required: true})}>
+              {trials.trials.map((trial: Trial) => (<SelectOption value={trial.id}>Trial {trial.id}</SelectOption>))}
+            </Select>
+            <ErrorMessage errors={errors} name="trialId" render={({ message }) => <ErrorLabel>{message || 'This is a required field'}</ErrorLabel>}/>
           </VerticalFormRow>
           }
           <Button type='submit'>Save</Button>
