@@ -1,19 +1,10 @@
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { Trial } from '../../api/src/graphql'
+import { GET_TRIALS_WITH_PARTICIPANTS } from '../queries';
 
-const GET_TRIALS = gql`
-  {
-    trials {
-      id
-      participants {
-        id
-      }
-    }
-  }
-`;
 
 export default function Trials () {
-  const { data } = useQuery(GET_TRIALS);
+  const { data } = useQuery(GET_TRIALS_WITH_PARTICIPANTS);
   return (
     <div>
     <p>Trials</p>

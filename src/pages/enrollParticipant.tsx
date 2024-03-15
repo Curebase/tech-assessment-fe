@@ -1,54 +1,21 @@
 import { useForm } from "react-hook-form"
-import { useQuery, useLazyQuery , useMutation, gql } from '@apollo/client';
+import { useQuery, useLazyQuery , useMutation } from '@apollo/client';
 import { Trial } from '../../api/src/graphql'
 import { ErrorMessage } from "@hookform/error-message"
+import { useNavigate } from "react-router-dom";
+import { GET_PARTICIPANTS, GET_TRIALS, VALIDATE_PARTICIPANT, CREATE_PARTICIPANT, ENROLL_PARTICIPANT, GET_TRIALS_WITH_PARTICIPANTS } from "../queries";
 
-const GET_TRIALS = gql`
-  {
-    trials {
-      id
-    }
-  }
-`;
-
-const VALIDATE_PARTICIPANT = gql`
-  query ValidateParticipant($participantId: Int!) {
-    validateParticipant(participantId: $participantId) 
-  }
-`
-
-const CREATE_PARTICIPANT = gql`
-  mutation CreateParticipant(
-    $ParticipantInfo: ParticipantInfo!
-  ) {
-    createParticipant(
-      participantInfo: $ParticipantInfo
-    ) {
-      id
-    }
-  }
-`
-
-const ENROLL_PARTICIPANT = gql`
-mutation EnrollParticipant(
-  $participantId: Int!
-  $trialId: String!
-) {
-  enrollParticipant(
-    participantId: $participantId
-    trialId: $trialId
-  ) {
-    id
-  }
-}`
 
 export default function EnrollParticipant() {
   const { data: trials } = useQuery(GET_TRIALS);
+  const navigate = useNavigate();
   const [validateParticipant, {}] = useLazyQuery(VALIDATE_PARTICIPANT)
   const [createParticipant, {}] = useMutation(CREATE_PARTICIPANT);
   const [EnrollParticipant, {}] = useMutation(ENROLL_PARTICIPANT);
+  const { refetch: refetchParticipants } = useQuery(GET_PARTICIPANTS)
+  const { refetch: refetchTrials } = useQuery(GET_TRIALS_WITH_PARTICIPANTS)
 
-  const { register, handleSubmit, formState: { errors }, setValue } = useForm()
+  const { register, handleSubmit, formState: { errors } } = useForm()
 
   const submitForm = async (formData: any) => {
     const newParticipant = await createParticipant({variables: {
@@ -63,7 +30,10 @@ export default function EnrollParticipant() {
     const participantValid = await validateParticipant({variables: {participantId: newParticipant.data.createParticipant.id}})
     if (participantValid.data.validateParticipant === true) {
       await EnrollParticipant({variables: {participantId: newParticipant.data.createParticipant.id, trialId: formData.trialId}})
+      refetchTrials()
     }
+    refetchParticipants()
+    return navigate(`${participantValid.data.validateParticipant}`)
   }
 
   return <div>

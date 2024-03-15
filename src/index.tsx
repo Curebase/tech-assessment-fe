@@ -11,6 +11,7 @@ import { client } from './ApolloClient';
 import Participants from './pages/participants';
 import Trials from './pages/trials';
 import EnrollParticipant from './pages/enrollParticipant';
+import EnrollResult from './pages/enrollResult';
 
 
 const router = createBrowserRouter([
@@ -29,8 +30,12 @@ const router = createBrowserRouter([
       },
       {
         path: 'participants/enrollParticipant',
-        element: <EnrollParticipant />
-      }
+        element: <EnrollParticipant />,
+      }, 
+      {
+        path: 'participants/enrollParticipant/:status',
+        element: <EnrollResult />
+      },
     ],
     
   },

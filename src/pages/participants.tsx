@@ -1,19 +1,12 @@
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { Participant } from '../../api/src/graphql'
 import { Link } from "react-router-dom";
 import { DateTime } from "luxon";
+import { GET_PARTICIPANTS } from '../queries';
 
-const GET_PARTICIPANTS = gql`
-  {
-    participants {
-      name
-      enrolledDate
-    }
-  }
-`;
 
 export default function Participants () {
-  const { loading, error, data } = useQuery(GET_PARTICIPANTS);
+  const { data } = useQuery(GET_PARTICIPANTS);
   return (
     <div>
       <p>Participants</p>
