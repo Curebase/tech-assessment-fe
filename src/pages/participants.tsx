@@ -6,6 +6,7 @@ import { DateTime } from "luxon";
 import { Button } from '../components/button';
 import ListCard from '../components/listCard';
 import { PageContainer } from '../components/pageContainer';
+import { TitleText } from '../components/titleText';
 import { GET_PARTICIPANTS } from '../queries';
 
 const TitleButtonContainer = styled.div`
@@ -29,7 +30,7 @@ export default function Participants () {
   return (
     <PageContainer>
       <TitleButtonContainer>
-        <p>Participants</p>
+        <TitleText>Participants</TitleText>
         <Button onClick={() => {navigate('/participants/enrollParticipant')} }>
           Enroll a participant
         </Button>
