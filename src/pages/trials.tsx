@@ -32,8 +32,7 @@ export default function Trials () {
       </TitleContainer>
       {data && <List>
         {data?.trials?.map((trial: Trial) => (
-        //@ts-ignore
-        <ListCard mainText={`Trial ${trial.id}`} subText={`${trial?.participants?.length} participant${trial?.participants && trial?.participants?.length > 1 ? "s" : ""}`}/>
+        <ListCard mainText={`Trial ${trial.id}`} subText={`${trial?.participants?.length} participant${trial?.participants && trial?.participants?.length === 1 ? "" : "s"}`}/>
         ))}
       </List>}
     </PageContainer>
