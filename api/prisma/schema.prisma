@@ -6,10 +6,22 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgres"
   url      = env("DATABASE_URL")
 }
 
 model Trial {
-  id String @id @default(uuid())
+  id           String        @id @default(uuid())
+  participants Participant[]
+}
+
+model Participant {
+  id           Int      @id @default(autoincrement())
+  name         String
+  height       Float
+  weight       Float
+  hasDiabetes  Boolean  @default(false)
+  hadCovid     Boolean  @default(false)
+  enrolledDate DateTime @default(now())
+  trials       Trial[]
 }

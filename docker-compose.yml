@@ -1,0 +1,26 @@
+# Set the version of docker compose to use
+version: '3.9'
+
+# The containers that compose the project
+services:
+  test_db:
+    image: postgres:13
+    restart: always
+    container_name: test-db
+    ports:
+      - '5433:5432'
+    environment:
+      POSTGRES_USER: prisma
+      POSTGRES_PASSWORD: prisma
+      POSTGRES_DB: tests
+
+  dev_db:
+    image: postgres:13
+    restart: always
+    container_name: dev-db
+    ports:
+      - '5435:5432'
+    environment:
+      POSTGRES_USER: prisma
+      POSTGRES_PASSWORD: prisma
+      POSTGRES_DB: dev

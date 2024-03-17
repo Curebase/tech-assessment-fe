@@ -2,13 +2,56 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import { ApolloProvider } from '@apollo/client';
+import { client } from './ApolloClient';
+import Participants from './pages/participants';
+import Trials from './pages/trials';
+import EnrollParticipant from './pages/enrollParticipant';
+import EnrollResult from './pages/enrollResult';
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+     
+      {
+        path: 'participants',
+        element: <Participants />
+      },
+      {
+        path: 'trials',
+        element: <Trials />
+      },
+      {
+        path: 'participants/enrollParticipant',
+        element: <EnrollParticipant />,
+      }, 
+      {
+        path: 'participants/enrollParticipant/:status',
+        element: <EnrollResult />
+      },
+    ],
+    
+  },
+  
+
+]);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css' />
+    <ApolloProvider client={client}>
+      <RouterProvider router={router} />
+    </ApolloProvider>
   </React.StrictMode>
 );
 

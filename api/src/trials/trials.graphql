@@ -1,7 +1,37 @@
-type Query {
-  trials: [Trial!]!
-}
+scalar Date
 
 type Trial {
   id: String!
+  participants: [Participant!]
+}
+
+type Participant {
+  id: Int!
+  name: String!
+  height: Float!
+  weight: Float!
+  hasDiabetes: Boolean!
+  hadCovid: Boolean!
+  enrolledDate: Date!
+  trials: [Trial!]
+}
+
+input ParticipantInfo {
+  name: String!
+  height: Float!
+  weight: Float!
+  hasDiabetes: Boolean
+  hadCovid: Boolean
+  enrolledDate: Date
+}
+
+type Mutation {
+  createParticipant(participantInfo: ParticipantInfo!): Participant
+  enrollParticipant(participantId: Int!, trialId: String!): Participant
+}
+
+type Query {
+  trials: [Trial!]!
+  participants: [Participant!]!
+  validateParticipant(participantId: Int!): Boolean
 }
